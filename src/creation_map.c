@@ -6,7 +6,7 @@
 /*   By: ahamini <ahamini@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 12:12:14 by ahamini           #+#    #+#             */
-/*   Updated: 2025/06/02 15:46:56 by ahamini          ###   ########.fr       */
+/*   Updated: 2025/06/02 17:25:59 by ahamini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,43 @@ static int	calc_map_height(t_vars *vars, char **file, int start_index)
 	}
 	vars->mapinfo.last_line_map = i;
 	return (height);
+}
+
+static int	copy_line_to_map_tab(char *src_line, char *dest_line, size_t width)
+{
+	size_t i;
+
+	i = 0;
+	while (src_line[i] && src_line[i] != '\n' && i < width)
+	{
+		dest_line[i] = src_line[i];
+		i++;
+	}
+	while (i < width)
+	{
+		dest_line[i] = '\0';
+		i++;
+	}
+	dest_line[i] = '\0';
+	return (SUCCESS);
+}
+
+static int	create_map_array(t_mapinfo *mapinfo, char **map_tab, int start_index)
+{
+	int i;
+	
+	i = 0;
+	while (i < mapinfo->height)
+	{
+		map_tab[i] = malloc(sizeof(char) * (mapinfo->width + 1));
+		if (!map_tab[i])
+			return (err_msg("Malloc error", FAILURE));
+		if (copy_line_to_map_tab(mapinfo->file[start_index + i], map_tab[i], mapinfo->width) == FAILURE)
+			return (FAILURE);
+		i++;
+	}
+	map_tab[i] = NULL;
+	return (SUCCESS);
 }
 
 int	start_map_creation(t_vars *vars, char **file, int i)

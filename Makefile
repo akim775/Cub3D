@@ -7,6 +7,7 @@ SOURCES=\
 	src/errors.c \
 	src/extract_map_info.c \
 	src/manage_colors.c \
+	src/creation_map.c \
 	src/free.c
 
 OBJECTS=$(SOURCES:.c=.o)

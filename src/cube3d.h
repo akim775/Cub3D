@@ -6,7 +6,7 @@
 /*   By: ahamini <ahamini@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 08:44:58 by ahamini           #+#    #+#             */
-/*   Updated: 2025/06/02 13:33:55 by ahamini          ###   ########.fr       */
+/*   Updated: 2025/06/02 17:14:36 by ahamini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,5 +101,7 @@ void	init_data(t_vars *vars);
 void	parse_data(char *path, t_vars *vars);
 void	*ft_calloc(size_t nmemb, size_t size);
 void	free_tab(void **tab);
+int		start_map_creation(t_vars *vars, char **file, int i);
+
 
 #endif

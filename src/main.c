@@ -6,7 +6,7 @@
 /*   By: ahamini <ahamini@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 08:30:55 by ahamini           #+#    #+#             */
-/*   Updated: 2025/05/26 13:42:23 by ahamini          ###   ########.fr       */
+/*   Updated: 2025/06/02 17:44:37 by ahamini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int main(int ac, char **av)
     init_data(&vars);
     parse_data(av[1], &vars);
     if (extract_map_info(&vars, vars.mapinfo.file) == FAILURE)
-		  return (free_vars(&vars), 1);
+		return (free_vars(&vars), 1);
+	if (parsing_map(&vars, vars.texinfo) == FAILURE)
+        return (free_vars(&vars), 1);
     return (0);
 }
