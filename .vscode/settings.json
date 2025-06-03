@@ -2,6 +2,8 @@
     "files.associations": {
         "libft.h": "c",
         "cstdio": "c",
-        "cube3d.h": "c"
+        "cube3d.h": "c",
+        "array": "c",
+        "string_view": "c"
     }
 }
