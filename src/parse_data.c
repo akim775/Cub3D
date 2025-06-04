@@ -6,7 +6,7 @@
 /*   By: ahamini <ahamini@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 13:18:37 by ahamini           #+#    #+#             */
-/*   Updated: 2025/06/02 10:16:55 by ahamini          ###   ########.fr       */
+/*   Updated: 2025/06/04 12:01:45 by ahamini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static int	count_lines(char *path)
 		err_msg(strerror(errno), errno);
 	else
 	{
-		printf("[DEBUG] Ligne lue : [%s]\n", line);
+		//printf("[DEBUG] Ligne lue : [%s]\n", line);
 		line = get_next_line(fd);
 		while (line != NULL)
 		{
@@ -45,7 +45,7 @@ static int	count_lines(char *path)
 		}
 		close(fd);
 	}
-    printf("[DEBUG] Nombre de lignes dans le fichier : %d\n", line_count);
+    //printf("[DEBUG] Nombre de lignes dans le fichier : %d\n", line_count);
 	return (line_count);
 }
 
@@ -73,7 +73,7 @@ static void	fill_tab(int row, int column, int i, t_vars *vars)
 	vars->mapinfo.file[row] = NULL;
 }
 
-void	parse_data(char *path, t_vars *vars)
+int	parse_data(char *path, t_vars *vars)
 {
 	int		row;
 	int		i;
@@ -83,14 +83,13 @@ void	parse_data(char *path, t_vars *vars)
 	row = 0;
 	column = 0;
 	vars->mapinfo.line_count = count_lines(path);
+	if (vars->mapinfo.line_count == 0)
+		return (err_msg("Map file is empty", 1));
 	vars->mapinfo.path = path;
 	vars->mapinfo.file = ft_calloc(vars->mapinfo.line_count \
 			+ 1, sizeof(char *));
 	if (!(vars->mapinfo.file))
-	{
-		err_msg("Malloc error", 0);
-		return ;
-	}
+		return (err_msg("Malloc error", 1));
 	vars->mapinfo.fd = open(path, O_RDONLY);
 	if (vars->mapinfo.fd < 0)
 		err_msg(strerror(errno), 1);
@@ -100,4 +99,5 @@ void	parse_data(char *path, t_vars *vars)
 		close(vars->mapinfo.fd);
 		//print_map(vars->mapinfo.file);
 	}
+	return (0);
 }

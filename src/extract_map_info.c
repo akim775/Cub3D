@@ -42,19 +42,30 @@ static char	*get_texture_path(char *line, int j)
 
 static int	fill_direction_textures(t_texinfo *textures, char *line, int j)
 {
-	printf("hello5\n");
 	if (line[j + 2] && !ft_isspace(line[j + 2]))
-		return (ERR);
+	return (ERR);
 	if (line[j] == 'N' && line[j + 1] == 'O' && !(textures->north))
-		textures->north = get_texture_path(line, j + 2);
+	textures->north = get_texture_path(line, j + 2);
 	else if (line[j] == 'S' && line[j + 1] == 'O' && !(textures->south))
-		textures->south = get_texture_path(line, j + 2);
+	textures->south = get_texture_path(line, j + 2);
 	else if (line[j] == 'W' && line[j + 1] == 'E' && !(textures->west))
-		textures->west = get_texture_path(line, j + 2);
+	textures->west = get_texture_path(line, j + 2);
 	else if (line[j] == 'E' && line[j + 1] == 'A' && !(textures->east))
-		textures->east = get_texture_path(line, j + 2);
+	textures->east = get_texture_path(line, j + 2);
 	else
-		return (ERR);
+	return (ERR);
+	return (SUCCESS);
+}
+
+static int	check_mdr_info(t_vars *vars)
+{
+	if (!vars->texinfo.north || !vars->texinfo.south
+		|| !vars->texinfo.west || !vars->texinfo.east)
+		return (err_msg("Missing texture path", FAILURE));
+	if (!vars->texinfo.floor_set)
+		return (err_msg("Missing floor color (F)", FAILURE));
+	if (!vars->texinfo.ceiling_set)
+		return (err_msg("Missing ceiling color (C)", FAILURE));
 	return (SUCCESS);
 }
 
@@ -64,7 +75,6 @@ static int	ignore_whitespaces_get_info(t_vars *vars, char **map, int i, int j)
 		j++;
 	if (ft_isprint(map[i][j]) && !ft_isdigit(map[i][j]))
 	{
-		printf("map = %c\n", map[i][j]);
 		if (ft_isupper(map[i][j]) && ft_isupper(map[i][j + 1]))
 		{
 			if (fill_direction_textures(&vars->texinfo, map[i], j) == ERR)
@@ -82,30 +92,16 @@ static int	ignore_whitespaces_get_info(t_vars *vars, char **map, int i, int j)
 	}
 	else if (ft_isdigit(map[i][j]))
 	{
+		//printf("map[%d][%d] = %c\n", i, j, map[i][j]);
+		if (check_mdr_info(vars) == FAILURE)
+			return (FAILURE);
 		if (start_map_creation(vars, map, i) == FAILURE)
 			return (err_msg("Invalid map", FAILURE));
-		printf("\ngood\n");
 		return (SUCCESS);
 	}
 	return (CONTINUE);
 }
 
-static int	check_mdr_info(t_vars *vars)
-{
-	/*printf("North = %p, South = %p, West = %p, East = %p\n",
-		vars->texinfo.north, vars->texinfo.south,
-		vars->texinfo.west, vars->texinfo.east);
-	printf("Floor_set = %d, Ceiling_set = %d\n",
-		vars->texinfo.floor_set, vars->texinfo.ceiling_set);*/
-	if (!vars->texinfo.north || !vars->texinfo.south
-		|| !vars->texinfo.west || !vars->texinfo.east)
-		return (err_msg("Missing texture path", FAILURE));
-	if (!vars->texinfo.floor_set)
-		return (err_msg("Missing floor color (F)", FAILURE));
-	if (!vars->texinfo.ceiling_set)
-		return (err_msg("Missing ceiling color (C)", FAILURE));
-	return (SUCCESS);
-}
 
 int	extract_map_info(t_vars *vars, char **map)
 {
@@ -125,12 +121,10 @@ int	extract_map_info(t_vars *vars, char **map)
 			else if (ret == FAILURE)
 				return (FAILURE);
 			else if (ret == SUCCESS)
-				break ;
+				return (SUCCESS) ;
 			j++;
 		}
 		i++;
 	}
-	if (check_mdr_info(vars) == FAILURE)
-		return (FAILURE);
 	return (SUCCESS);
 }

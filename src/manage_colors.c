@@ -6,7 +6,7 @@
 /*   By: ahamini <ahamini@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 12:01:05 by ahamini           #+#    #+#             */
-/*   Updated: 2025/06/02 11:32:23 by ahamini          ###   ########.fr       */
+/*   Updated: 2025/06/04 09:53:10 by ahamini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static int	*copy_into_rgb_array(char **rgb_to_convert, int *rgb)
 
 static int	*set_rgb_colors(char *line)
 {
-	printf("setrgb\n");
+	//printf("setrgb\n");
 	char	**rgb_to_convert;
 	int		*rgb;
 	int		count;
@@ -91,10 +91,10 @@ static int	check_rgb_line(char *line)
 
 int	fill_color_textures(t_vars *vars, t_texinfo *textures, char *line, int j)
 {
-	printf("\nj1 = %d\n", j);
+	//printf("\nj1 = %d\n", j);
 	if (check_rgb_line(line) == ERR)
 		return (ERR);
-	printf("\nj2 = %d\n", j);
+	//printf("\nj2 = %d\n", j);
 	if (line[j + 1] && !ft_isspace(line[j + 1]))
 		return (err_msg("Invalid floor or ceiling format", ERR));
 	if (!textures->ceiling_set && line[j] == 'C')

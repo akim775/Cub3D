@@ -9,6 +9,8 @@ SOURCES=\
 	src/manage_colors.c \
 	src/creation_map.c \
 	src/parse_map.c \
+	src/valid_char_in_map.c \
+	src/find_player_pos.c \
 	src/free.c
 
 OBJECTS=$(SOURCES:.c=.o)

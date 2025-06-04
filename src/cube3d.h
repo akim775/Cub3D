@@ -6,7 +6,7 @@
 /*   By: ahamini <ahamini@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 08:44:58 by ahamini           #+#    #+#             */
-/*   Updated: 2025/06/02 17:14:36 by ahamini          ###   ########.fr       */
+/*   Updated: 2025/06/04 14:17:26 by ahamini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,21 @@ typedef struct s_texinfo
 	int				y;
 }	t_texinfo;
 
+typedef struct s_player
+{
+	char	dir;
+	double	pos_x;
+	double	pos_y;
+	double	dir_x;
+	double	dir_y;
+	double	plane_x;
+	double	plane_y;
+	int		has_moved;
+	int		move_x;
+	int		move_y;
+	int		rotate;
+}	t_player;
+
 typedef struct s_mapinfo
 {
 	int			fd;
@@ -85,6 +100,7 @@ typedef struct s_vars
 	int			win_width;
 	t_texinfo	texinfo;
 	t_mapinfo	mapinfo;
+	t_player	player;
 	char		**map;
 	int			**texture_pixels;
 	int			**textures;
@@ -98,10 +114,11 @@ int		free_vars(t_vars *vars);
 bool	parse_args(t_vars *vars, char **argv, int ac);
 bool	check_file(char *file, t_vars *vars);
 void	init_data(t_vars *vars);
-void	parse_data(char *path, t_vars *vars);
+int		parse_data(char *path, t_vars *vars);
 void	*ft_calloc(size_t nmemb, size_t size);
 void	free_tab(void **tab);
 int		start_map_creation(t_vars *vars, char **file, int i);
-
+bool	is_valid_char(t_vars *vars, char **map_tab);
+int		is_player_position_valid(t_vars *vars, char **map_tab);
 
 #endif
