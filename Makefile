@@ -12,6 +12,7 @@ SOURCES=\
 	src/valid_char_in_map.c \
 	src/find_player_pos.c \
 	src/parse_textures.c \
+	src/key_press.c \
 	src/free.c
 
 OBJECTS=$(SOURCES:.c=.o)

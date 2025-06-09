@@ -6,7 +6,7 @@
 /*   By: ahamini <ahamini@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 08:30:55 by ahamini           #+#    #+#             */
-/*   Updated: 2025/06/09 14:16:05 by ahamini          ###   ########.fr       */
+/*   Updated: 2025/06/09 15:17:21 by ahamini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,7 @@ int main(int ac, char **av)
     if (parsing_textures(&vars.texinfo) == FAILURE)
 		return (free_vars(&vars), 1);
 	init_mlx(&vars);
+	mlx_key_hook(vars.win, key_press, &vars);
+    mlx_loop(vars.mlx);
     return (0);
 }

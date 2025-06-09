@@ -6,7 +6,7 @@
 /*   By: ahamini <ahamini@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 08:44:58 by ahamini           #+#    #+#             */
-/*   Updated: 2025/06/09 14:17:05 by ahamini          ###   ########.fr       */
+/*   Updated: 2025/06/09 15:19:13 by ahamini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,5 +123,7 @@ bool	is_valid_char(t_vars *vars, char **map_tab);
 int		is_there_a_player(t_vars *vars, char **map_tab);
 int		parsing_textures(t_texinfo *textures);
 void	clean_exit(t_vars *vars, int code);
+int		key_press(int key, t_vars *vars);
+
 
 #endif
