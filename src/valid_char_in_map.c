@@ -6,11 +6,11 @@
 /*   By: ahamini <ahamini@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 12:56:38 by ahamini           #+#    #+#             */
-/*   Updated: 2025/06/04 13:51:01 by ahamini          ###   ########.fr       */
+/*   Updated: 2025/06/09 09:23:06 by ahamini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3d.h"
+#include "cub3d.h"
 
 static bool	error_char(char c, int y, int x)
 {

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cube3d.h                                           :+:      :+:    :+:   */
+/*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahamini <ahamini@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 08:44:58 by ahamini           #+#    #+#             */
-/*   Updated: 2025/06/04 14:17:26 by ahamini          ###   ########.fr       */
+/*   Updated: 2025/06/09 14:17:05 by ahamini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define CUB3D_H
 
 # include "libft.h"
-//# include "mlx.h"
+# include "../mlx/mlx.h"
 # include <stddef.h>
 # include <stdio.h>
 # include <X11/keysym.h>
@@ -56,8 +56,8 @@ typedef struct s_texinfo
 	int				*ceiling;
 	int				floor_set;
 	int				ceiling_set;
-	unsigned long	hex_floor;
-	unsigned long	hex_ceiling;
+	unsigned long	floor_hex;
+	unsigned long	ceiling_hex;
 	int				size;
 	int				index;
 	double			step;
@@ -108,17 +108,20 @@ typedef struct s_vars
 
 int		main(int ac, char **av);
 int		extract_map_info(t_vars *vars, char **map);
-int		fill_color_textures(t_vars *vars, t_texinfo *textures, char *line, int j);
+int		fill_color_textures(t_texinfo *textures, char *line, int j);
 int		err_msg(char *str, int code);
 int		free_vars(t_vars *vars);
-bool	parse_args(t_vars *vars, char **argv, int ac);
-bool	check_file(char *file, t_vars *vars);
+bool	parse_args(char **argv, int ac);
+bool	check_file(char *fill);
 void	init_data(t_vars *vars);
 int		parse_data(char *path, t_vars *vars);
 void	*ft_calloc(size_t nmemb, size_t size);
 void	free_tab(void **tab);
 int		start_map_creation(t_vars *vars, char **file, int i);
+int		parsing_map(t_vars *vars, char **map_tab);
 bool	is_valid_char(t_vars *vars, char **map_tab);
-int		is_player_position_valid(t_vars *vars, char **map_tab);
+int		is_there_a_player(t_vars *vars, char **map_tab);
+int		parsing_textures(t_texinfo *textures);
+void	clean_exit(t_vars *vars, int code);
 
 #endif

@@ -1,10 +1,10 @@
-F 139,99,120
+F 139,99,255
 C 171,154,120
 
-NO textures/simonkraft/bookshelf.xp
-SO textures/simonkraft/bookshelf_01.xpm
-WE textures/simonkraft/bookshelf_02.xpm
-EA textures/simonkraft/bookshelf_03.xpm
+NO textures/bookshelf.xpm
+SO textures/bookshelf_01.xpm
+WE textures/bookshelf_02.xpm
+EA textures/bookshelf_03.xpm
 
 111111111111111111111
 1000000000000000000011111

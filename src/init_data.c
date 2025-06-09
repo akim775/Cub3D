@@ -6,11 +6,11 @@
 /*   By: ahamini <ahamini@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 13:13:50 by ahamini           #+#    #+#             */
-/*   Updated: 2025/06/02 14:19:39 by ahamini          ###   ########.fr       */
+/*   Updated: 2025/06/09 11:26:04 by ahamini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3d.h"
+#include "cub3d.h"
 
 void	init_textinfo(t_texinfo *textures)
 {
@@ -19,8 +19,10 @@ void	init_textinfo(t_texinfo *textures)
 	textures->west = NULL;
 	textures->east = NULL;
 	textures->floor = 0;
-	textures->ceiling = 0;
+	textures->floor_hex = 0x0;
 	textures->floor_set = 0;
+	textures->ceiling = 0;
+	textures->ceiling_hex = 0x0;
 	textures->ceiling_set = 0;
 }
 

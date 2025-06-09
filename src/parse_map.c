@@ -6,11 +6,11 @@
 /*   By: ahamini <ahamini@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 12:43:16 by ahamini           #+#    #+#             */
-/*   Updated: 2025/06/04 15:57:58 by ahamini          ###   ########.fr       */
+/*   Updated: 2025/06/09 09:23:06 by ahamini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3d.h"
+#include "cub3d.h"
 
 static	bool	error_surr(int y, int x)
 {
@@ -55,6 +55,28 @@ bool	is_map_closed(t_mapinfo *map, char **maps)
 	return (true);
 }
 
+static int	is_map_at_the_eof(t_mapinfo *map)
+{
+	int	i;
+	int	j;
+
+	i = map->last_line_map;
+	while (map->file[i])
+	{
+		j = 0;
+		while (map->file[i][j])
+		{
+			if (map->file[i][j] != ' ' && map->file[i][j] != '\t'
+				&& map->file[i][j] != '\r' && map->file[i][j] != '\n'
+				&& map->file[i][j] != '\v' && map->file[i][j] != '\f')
+				return (FAILURE);
+			j++;
+		}
+		i++;
+	}
+	return (SUCCESS);
+}
+
 int	parsing_map(t_vars *vars, char **map_tab)
 {
 	if (!vars->map || !vars->map[0])
@@ -65,9 +87,9 @@ int	parsing_map(t_vars *vars, char **map_tab)
 		return (err_msg("To be valid, the map requires a minimum of 3 lines", FAILURE));
 	if (!is_valid_char(vars, map_tab))
 		return (FAILURE);
-	if (is_player_position_valid(vars, map_tab) == FAILURE)
+	if (is_there_a_player(vars, map_tab) == FAILURE)
 		return (FAILURE);
-	/*if (check_map_is_at_the_end(&vars->mapinfo) == FAILURE)
-		return (err_msg("Map is not at the end of the file", FAILURE));*/
+	if (is_map_at_the_eof(&vars->mapinfo) == FAILURE)
+		return (err_msg("Map is not at the end of the file", FAILURE));
 	return (SUCCESS);
 }

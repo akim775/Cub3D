@@ -6,11 +6,11 @@
 /*   By: ahamini <ahamini@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 12:01:05 by ahamini           #+#    #+#             */
-/*   Updated: 2025/06/04 09:53:10 by ahamini          ###   ########.fr       */
+/*   Updated: 2025/06/09 14:16:38 by ahamini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3d.h"
+#include "cub3d.h"
 
 static bool	no_digit(char *str)
 {
@@ -89,7 +89,7 @@ static int	check_rgb_line(char *line)
 }
 
 
-int	fill_color_textures(t_vars *vars, t_texinfo *textures, char *line, int j)
+int	fill_color_textures(t_texinfo *textures, char *line, int j)
 {
 	//printf("\nj1 = %d\n", j);
 	if (check_rgb_line(line) == ERR)

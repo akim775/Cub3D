@@ -6,11 +6,11 @@
 /*   By: ahamini <ahamini@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 13:41:50 by ahamini           #+#    #+#             */
-/*   Updated: 2025/06/04 14:57:58 by ahamini          ###   ########.fr       */
+/*   Updated: 2025/06/09 09:23:06 by ahamini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3d.h"
+#include "cub3d.h"
 
 static int	process_line(t_vars *vars, char *line, int y, int *player_found)
 {
@@ -36,7 +36,7 @@ static int	process_line(t_vars *vars, char *line, int y, int *player_found)
 	return (SUCCESS);
 }
 
-int	is_player_position_valid(t_vars *vars, char **map_tab)
+int	is_there_a_player(t_vars *vars, char **map_tab)
 {
 	int	y;
 	int	player_found;

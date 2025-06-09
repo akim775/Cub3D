@@ -6,11 +6,11 @@
 /*   By: ahamini <ahamini@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 13:35:44 by ahamini           #+#    #+#             */
-/*   Updated: 2025/05/23 12:15:31 by ahamini          ###   ########.fr       */
+/*   Updated: 2025/06/09 09:23:06 by ahamini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3d.h"
+#include "cub3d.h"
 
 int	err_msg(char *str, int code)
 {

@@ -1,1 +1,2 @@
-src/parse_data.o: src/parse_data.c src/cube3d.h libft/libft.h
+src/parse_data.o: src/parse_data.c src/cub3d.h libft/libft.h \
+  src/../mlx/mlx.h

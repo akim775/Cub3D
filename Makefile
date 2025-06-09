@@ -11,17 +11,18 @@ SOURCES=\
 	src/parse_map.c \
 	src/valid_char_in_map.c \
 	src/find_player_pos.c \
+	src/parse_textures.c \
 	src/free.c
 
 OBJECTS=$(SOURCES:.c=.o)
 DEPENDENCIES=$(OBJECTS:.o=.d)
 
-NAME=cube3D
+NAME=cub3D
 CC=clang
 
-
+OPTS=-O2 -fno-builtin
 DEBUG=-g3
-CFLAGS=-Ilibft -MMD $(DEBUG) -Wall -Wextra #-Werror
+CFLAGS=-Imlx -Ilibft -MMD $(OPTS) $(DEBUG) -Wall -Wextra #-Werror
 
 all: $(NAME)
 
@@ -30,14 +31,18 @@ all: $(NAME)
 libft/libft.a:
 	make -C libft
 
-$(NAME): $(OBJECTS) libft/libft.a 
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJECTS) libft/libft.a $(LDFLAGS)
+mlx/libmlx.a:
+	make -C mlx
+
+$(NAME): $(OBJECTS) libft/libft.a mlx/libmlx.a
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJECTS) libft/libft.a mlx/libmlx.a -lm -lX11 -lXext $(LDFLAGS)
 
 clean:
 	rm -rf $(OBJECTS) $(DEPENDENCIES) 
+	make -C mlx clean
 	make -C libft fclean
 
 fclean: clean
-	rm -f cube3D
+	rm -f cub3d
 
 re: fclean all

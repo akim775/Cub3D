@@ -6,11 +6,11 @@
 /*   By: ahamini <ahamini@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:49:00 by ahamini           #+#    #+#             */
-/*   Updated: 2025/05/22 14:34:36 by ahamini          ###   ########.fr       */
+/*   Updated: 2025/06/09 14:15:50 by ahamini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3d.h"
+#include "cub3d.h"
 
 static	bool	err_extension(char *str, int i, bool hidden)
 {
@@ -68,11 +68,11 @@ static bool check_arg_and_name(int ac, char **av)
     return (true);
 }
 
-bool    parse_args(t_vars *vars, char **av, int ac)
+bool    parse_args(char **av, int ac)
 {
 	if (!check_arg_and_name(ac, av))
 		return (false);
-	if (!check_file(av[1], vars))
+	if (!check_file(av[1]))
 		return (false);
 	return (true);
 }

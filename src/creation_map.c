@@ -6,11 +6,11 @@
 /*   By: ahamini <ahamini@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 12:12:14 by ahamini           #+#    #+#             */
-/*   Updated: 2025/06/04 14:22:04 by ahamini          ###   ########.fr       */
+/*   Updated: 2025/06/09 09:23:06 by ahamini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3d.h"
+#include "cub3d.h"
 
 size_t	calc_map_width(char **file, int start_index)
 {

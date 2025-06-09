@@ -6,13 +6,13 @@
 /*   By: ahamini <ahamini@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 09:33:18 by ahamini           #+#    #+#             */
-/*   Updated: 2025/05/22 13:05:38 by ahamini          ###   ########.fr       */
+/*   Updated: 2025/06/09 10:00:16 by ahamini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3d.h"
+#include "cub3d.h"
 
-bool	check_file(char *file, t_vars *vars)
+bool	check_file(char *file)
 {
 	int			fd;
 

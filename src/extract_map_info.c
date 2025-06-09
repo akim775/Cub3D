@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3d.h"
+#include "cub3d.h"
 
 static char	*get_texture_path(char *line, int j)
 {
@@ -83,7 +83,7 @@ static int	ignore_whitespaces_get_info(t_vars *vars, char **map, int i, int j)
 		}	
 		else if ((map[i][j] == 'C' || map[i][j] == 'F') && ft_isspace(map[i][j + 1]))
 		{
-			if (fill_color_textures(vars, &vars->texinfo, map[i], j) == ERR)
+			if (fill_color_textures(&vars->texinfo, map[i], j) == ERR)
 				return (FAILURE);
 			return (BREAK);
 		}
