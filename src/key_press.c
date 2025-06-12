@@ -6,7 +6,7 @@
 /*   By: ahamini <ahamini@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 15:18:02 by ahamini           #+#    #+#             */
-/*   Updated: 2025/06/09 15:30:04 by ahamini          ###   ########.fr       */
+/*   Updated: 2025/06/12 09:52:06 by ahamini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,4 +21,11 @@ int	key_press(int key, t_vars *vars)
 		clean_exit(vars, 0);
     }
     return (0);
+}
+
+int	close_window(t_vars *vars)
+{
+	ft_putstr_fd("Game closed. See you next time!\n", 2);
+	clean_exit(vars, 0);
+	return (0);
 }

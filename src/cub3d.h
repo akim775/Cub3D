@@ -6,7 +6,7 @@
 /*   By: ahamini <ahamini@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 08:44:58 by ahamini           #+#    #+#             */
-/*   Updated: 2025/06/09 15:19:13 by ahamini          ###   ########.fr       */
+/*   Updated: 2025/06/12 09:52:38 by ahamini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <X11/keysym.h>
 # include <X11/Xlib.h>
 # include <X11/extensions/XShm.h>
+# include <X11/X.h>
 # include <fcntl.h>
 # include <stdbool.h>
 # include <errno.h>
@@ -124,6 +125,6 @@ int		is_there_a_player(t_vars *vars, char **map_tab);
 int		parsing_textures(t_texinfo *textures);
 void	clean_exit(t_vars *vars, int code);
 int		key_press(int key, t_vars *vars);
-
+int		close_window(t_vars *vars);
 
 #endif
