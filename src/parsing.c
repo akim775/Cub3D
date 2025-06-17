@@ -6,7 +6,7 @@
 /*   By: ahamini <ahamini@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:49:00 by ahamini           #+#    #+#             */
-/*   Updated: 2025/06/09 14:15:50 by ahamini          ###   ########.fr       */
+/*   Updated: 2025/06/16 11:37:24 by ahamini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,20 +55,20 @@ bool	check_file_name(char *str)
 	}
 }
 
-static bool check_arg_and_name(int ac, char **av)
+static bool	check_arg_and_name(int ac, char **av)
 {
-    if (ac != 2)
-    {
-        ft_putstr_fd(RED"Error : Incorrect number of arguments.\n", 2);
-        ft_putstr_fd(BRED"Usage: ./cub3d 'map_file'\n"RESET, 2);
-        return (false);
-    }
-    if (!check_file_name(av[1]))
-        return (false);
-    return (true);
+	if (ac != 2)
+	{
+		ft_putstr_fd(RED"Error : Incorrect number of arguments.\n", 2);
+		ft_putstr_fd(BRED"Usage: ./cub3d 'map_file'\n"RESET, 2);
+		return (false);
+	}
+	if (!check_file_name(av[1]))
+		return (false);
+	return (true);
 }
 
-bool    parse_args(char **av, int ac)
+bool	parse_args(char **av, int ac)
 {
 	if (!check_arg_and_name(ac, av))
 		return (false);

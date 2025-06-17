@@ -6,7 +6,7 @@
 /*   By: ahamini <ahamini@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 12:56:38 by ahamini           #+#    #+#             */
-/*   Updated: 2025/06/09 09:23:06 by ahamini          ###   ########.fr       */
+/*   Updated: 2025/06/16 11:29:22 by ahamini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ static bool	error_char(char c, int y, int x)
 
 bool	is_valid_char(t_vars *vars, char **map_tab)
 {
-	int	    y;
-	int	    x;
-    char    c;
+	int		y;
+	int		x;
+	char	c;
 
 	y = 0;
 	while (y < vars->mapinfo.height)
@@ -37,9 +37,9 @@ bool	is_valid_char(t_vars *vars, char **map_tab)
 		x = 0;
 		while (x < vars->mapinfo.width && map_tab[y][x])
 		{
-            c = map_tab[y][x];
-			if (!(c == '0'|| c == '1' || c == ' ' || c == 'N'
-                    || c == 'S' || c == 'E' || c == 'W'))
+			c = map_tab[y][x];
+			if (!(c == '0' || c == '1' || c == ' ' || c == 'N'
+					|| c == 'S' || c == 'E' || c == 'W'))
 				return (error_char(map_tab[y][x], y, x));
 			x++;
 		}

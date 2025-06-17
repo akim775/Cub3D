@@ -6,7 +6,7 @@
 /*   By: ahamini <ahamini@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 12:43:16 by ahamini           #+#    #+#             */
-/*   Updated: 2025/06/09 09:23:06 by ahamini          ###   ########.fr       */
+/*   Updated: 2025/06/16 11:39:01 by ahamini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,17 +30,31 @@ bool	is_map_closed(t_mapinfo *map, char **maps)
 	int	i;
 	int	y;
 
-	y = 0;
 	i = 0;
-	while (y != map->height)
+	while (maps[0][i])
 	{
+		if (maps[0][i] != '1')
+			return (error_surr(0, i));
+		i++;
+	}
+	i = 0;
+	while (maps[map->height - 1][i])
+	{
+		if (maps[map->height - 1][i] != '1')
+			return (error_surr(map->height - 1, i));
+		i++;
+	}
+	y = 1;
+	while (y < map->height - 1)
+	{
+		i = 0;
 		while (maps[y][i])
 		{
 			if (maps[y][i] == '0' || ft_isalpha(maps[y][i]))
 			{
 				if (maps[y][i + 1] != '0' && maps[y][i + 1] != '1' && !ft_isalpha(maps[y][i + 1]))
 					return (error_surr(y, i + 1));
-				if (maps[y][i - 1] != '0' && maps[y][i -1] != '1' && !ft_isalpha(maps[y][i -1]))
+				if (maps[y][i - 1] != '0' && maps[y][i - 1] != '1' && !ft_isalpha(maps[y][i - 1]))
 					return (error_surr(y, i - 1));
 				if (maps[y + 1][i] != '0' && maps[y + 1][i] != '1' && !ft_isalpha(maps[y + 1][i]))
 					return (error_surr(y + 1, i));
@@ -49,7 +63,6 @@ bool	is_map_closed(t_mapinfo *map, char **maps)
 			}
 			i++;
 		}
-		i = 0;
 		y++;
 	}
 	return (true);
@@ -84,7 +97,7 @@ int	parsing_map(t_vars *vars, char **map_tab)
 	if (!is_map_closed(&vars->mapinfo, map_tab))
 		return (FAILURE);
 	if (vars->mapinfo.height < 3)
-		return (err_msg("To be valid, the map requires a minimum of 3 lines", FAILURE));
+		return (err_msg("Map requires a minimum of 3 lines", FAILURE));
 	if (!is_valid_char(vars, map_tab))
 		return (FAILURE);
 	if (is_there_a_player(vars, map_tab) == FAILURE)

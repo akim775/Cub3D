@@ -6,7 +6,7 @@
 /*   By: ahamini <ahamini@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 13:18:37 by ahamini           #+#    #+#             */
-/*   Updated: 2025/06/09 09:23:06 by ahamini          ###   ########.fr       */
+/*   Updated: 2025/06/16 11:42:24 by ahamini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,16 +26,16 @@
 static int	count_lines(char *path)
 {
 	int		fd;
-	char	*line = NULL;
+	char	*line;
 	int		line_count;
 
+	line = NULL;
 	line_count = 0;
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
 		err_msg(strerror(errno), errno);
 	else
 	{
-		//printf("[DEBUG] Ligne lue : [%s]\n", line);
 		line = get_next_line(fd);
 		while (line != NULL)
 		{
@@ -45,7 +45,6 @@ static int	count_lines(char *path)
 		}
 		close(fd);
 	}
-    //printf("[DEBUG] Nombre de lignes dans le fichier : %d\n", line_count);
 	return (line_count);
 }
 
@@ -97,7 +96,6 @@ int	parse_data(char *path, t_vars *vars)
 	{
 		fill_tab(row, column, i, vars);
 		close(vars->mapinfo.fd);
-		//print_map(vars->mapinfo.file);
 	}
 	return (0);
 }

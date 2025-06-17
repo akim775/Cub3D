@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   extract_map_info.c                                    :+:      :+:    :+:   */
+/*   extract_map_info.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahamini <ahamini@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/22 14:35:23 by ahamini           #+#    #+#             */
-/*   Updated: 2025/05/23 08:32:37 by ahamini          ###   ########.fr       */
+/*   Created: 2025/06/16 11:46:41 by ahamini           #+#    #+#             */
+/*   Updated: 2025/06/16 11:54:47 by ahamini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static char	*get_texture_path(char *line, int j)
 static int	fill_direction_textures(t_texinfo *textures, char *line, int j)
 {
 	if (line[j + 2] && !ft_isspace(line[j + 2]))
-	return (ERR);
+		return (ERR);
 	if (line[j] == 'N' && line[j + 1] == 'O' && !(textures->north))
 	textures->north = get_texture_path(line, j + 2);
 	else if (line[j] == 'S' && line[j + 1] == 'O' && !(textures->south))
@@ -53,7 +53,7 @@ static int	fill_direction_textures(t_texinfo *textures, char *line, int j)
 	else if (line[j] == 'E' && line[j + 1] == 'A' && !(textures->east))
 	textures->east = get_texture_path(line, j + 2);
 	else
-	return (ERR);
+		return (ERR);
 	return (SUCCESS);
 }
 
@@ -92,7 +92,6 @@ static int	ignore_whitespaces_get_info(t_vars *vars, char **map, int i, int j)
 	}
 	else if (ft_isdigit(map[i][j]))
 	{
-		//printf("map[%d][%d] = %c\n", i, j, map[i][j]);
 		if (check_mdr_info(vars) == FAILURE)
 			return (FAILURE);
 		if (start_map_creation(vars, map, i) == FAILURE)
@@ -101,7 +100,6 @@ static int	ignore_whitespaces_get_info(t_vars *vars, char **map, int i, int j)
 	}
 	return (CONTINUE);
 }
-
 
 int	extract_map_info(t_vars *vars, char **map)
 {
@@ -121,7 +119,7 @@ int	extract_map_info(t_vars *vars, char **map)
 			else if (ret == FAILURE)
 				return (FAILURE);
 			else if (ret == SUCCESS)
-				return (SUCCESS) ;
+				return (SUCCESS);
 			j++;
 		}
 		i++;

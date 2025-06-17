@@ -6,7 +6,7 @@
 /*   By: ahamini <ahamini@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 13:41:50 by ahamini           #+#    #+#             */
-/*   Updated: 2025/06/09 09:23:06 by ahamini          ###   ########.fr       */
+/*   Updated: 2025/06/16 11:21:56 by ahamini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,3 @@ int	is_there_a_player(t_vars *vars, char **map_tab)
 		return (err_msg("No player found", FAILURE));
 	return (SUCCESS);
 }
-
-

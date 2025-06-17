@@ -6,7 +6,7 @@
 /*   By: ahamini <ahamini@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 08:44:58 by ahamini           #+#    #+#             */
-/*   Updated: 2025/06/12 09:52:38 by ahamini          ###   ########.fr       */
+/*   Updated: 2025/06/16 11:29:45 by ahamini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,15 @@ enum e_output
 	BREAK = 3,
 	CONTINUE = 4
 };
+
+typedef struct s_img
+{
+	void	*img;
+	int		*addr;
+	int		pixel_bits;
+	int		size_line;
+	int		endian;
+}	t_img;
 
 typedef struct s_texinfo
 {
@@ -105,7 +114,7 @@ typedef struct s_vars
 	char		**map;
 	int			**texture_pixels;
 	int			**textures;
-}   t_vars;
+}	t_vars;
 
 int		main(int ac, char **av);
 int		extract_map_info(t_vars *vars, char **map);
@@ -126,5 +135,6 @@ int		parsing_textures(t_texinfo *textures);
 void	clean_exit(t_vars *vars, int code);
 int		key_press(int key, t_vars *vars);
 int		close_window(t_vars *vars);
+void	init_textures(t_vars *vars);
 
 #endif
